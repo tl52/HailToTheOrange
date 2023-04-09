@@ -13,6 +13,6 @@ Using the Zesty Pesty will start by the user having additional orange peels, usi
 
 We incorporated accessibility into our product by installing a digital water sensor with an LED and speaker connected to it for an auditory and visual output. The Zesty Pesty will light up and make a sound indicating the water level is too low or high when refilling the water basin at the bottom. The knob connected to a potientiometer and the know was made with rigids to make easier to grab and rotate.    
 
-We aim to create another use of a food waster product- orange peels or other citrus fuit, tea leaves, and herbs. 
+We aim to create another use of a food waster product orange peels or other citrus fuit, tea leaves, and herbs. 
 
 Also, note Hail to the Orange is a slogan used by the University of Illinois Urbana Champaign athletics becuse ornage and blue are the school colors. 
