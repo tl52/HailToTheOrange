@@ -1,0 +1,53 @@
+%{ Compare battery life to battery usage to optimize 
+% for design and user experience 
+%}
+
+% Battery characteristics of (Quantity: 2) Double AA Alkaline batteries
+capacity = 5700; % mAh
+voltage = 3.0; % V
+battery_energy_capacity = capacity * voltage / 1000; % Wh
+
+%{ 
+Load power is made up to be demonstrated; typically significantly smaller
+Load duty cycle comes from existing motors
+Load duration: We want the diffuser to be able to run for up to 15 minutes
+%}
+% Load characteristics
+load_power = 5; % W
+load_duty_cycle = 0.5;
+load_duration = 0.25; % hours
+
+% Discharge curve
+% Battery internal resistance varies between 0.1-0.9 ohms, but we're
+% assuming 0.5 ohms
+load_current = load_power / voltage;
+battery_internal_resistance = 0.5; % ohms
+time = 0:0.1:1000; % time vector
+discharge_current = load_current ./ (1 - load_duty_cycle);
+discharge_voltage = voltage - discharge_current .* battery_internal_resistance;
+discharge_time = capacity ./ (discharge_current * 1000); % convert from mA to A
+
+% Battery life and energy usage calculation
+
+% end_voltage is when the batteries don't power the load properly anymore
+end_voltage = 2.75; % V
+end_charge = end_voltage * capacity / voltage;
+battery_life = min(discharge_time(discharge_voltage >= end_voltage));
+load_energy_usage = load_power * load_duty_cycle * load_duration;
+
+% Energy capacity used calculation
+energy_capacity_used = load_energy_usage / battery_energy_capacity;
+
+% Plot battery voltage and energy usage over time
+plot(time, discharge_voltage);
+hold on;
+plot([0, battery_life, battery_life], [load_power * load_duty_cycle, load_power * load_duty_cycle, 0], 'r--');
+xlim([0, 3000]); % Set the x-axis limits to [0, 3000]
+ylim([0, 1]); % Set the y-axis limits to [0, 1]
+text(battery_life, load_power * load_duty_cycle, sprintf('Battery Life: %.2f hrs\nEnergy Capacity Used: %.2f%%', battery_life, energy_capacity_used*100), 'HorizontalAlignment', 'right');
+title("Battery Voltage vs. Energy Usage");
+ylabel("Battery Voltage (V)");
+xlabel("Energy Usage (mAH)");
+legend("Energy Usage", "Battery Voltage");
+
+savefig("battery_life.png");
