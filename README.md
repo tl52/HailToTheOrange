@@ -8,7 +8,7 @@ We made an oil diffuser that uses scraps, like orange peels or herbs. It reuses 
 
 View our View1 and View2 photos for the final product design. We incorporated an electrical component controlled by the servomotor code and the circuit schematic all in our Git. If you want to see more in detail of the CAD, there is a design drawing from Fusion 360 with the bottom, side views and a section view (ref. Hail to the Orange Drawing v2.pdf). The drawing has a more detailed view of the grinder, electrical components and housing, driveshaft, helical gears, and top flip cap.
 
-The circuit schematic uses an Arduino 
+The circuit schematic uses an Arduino, servomotor, ultrasonic vibrator, led, resistor, water sensor, speaker, and potentiometer. The potentiometer acts as a dial, that tells the arduino how long the diffuser should run for. When it is turned, the servo moves for 30 seconds and then the ultrasonic sensor turns on. The LED and speaker work with the water sensor to let the user know whether or not they need to add more water to the basin. 
 
 Using the Zesty Pesty will start by the user having additional orange peels, using the tab to flip up the top cap and inserting the orange peels. They will turn the knob at the bottom indicating the time duration they want the diffuser to run. Then, their orange peels will be ground in the helical gears and fall with gravity into the water below. The ultrasonic vibrator will vibrate and create a mist infused with orange oils and disperse from the top. Water can later be refilled but sliding the bottom housing off and pouring more water inside. The electrical components of the Zesty Pesty are stored below the water basin.
 
